@@ -1,4 +1,4 @@
-# AsiAir Bugfix for DSLR Image Size Bug in v2.1.4
+# AsiAir Bugfix for DSLR Image Size Bug in v2.1.2 (March 2024)
 With the latest update of the AsiAir images created with DSLR are saved in a different resolution which leads to processing errors in some stacking software.
 
 Image resolution differs by 1 pixel in the width, so the easiest way to solve this is by resizing the older, bigger images to the new resolution by removing the rightmost column of pixels 
