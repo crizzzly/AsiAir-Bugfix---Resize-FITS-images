@@ -21,14 +21,10 @@ def resize_files():
     os.chdir(working_directory)
     print(f"Working directory: {working_directory} ")
 
-    # Loop through all files in the directory
     for filename in os.listdir(dir_path):
-        if filename.endswith(".fit"):
-            # Open the FITS file
-
+        if filename.endswith(".fit") or filename.endswith(".fits"):
             try:
                 with fits.open(filename) as hdul:
-                    # Access the data and header
                     data = hdul[0].data
                     header = hdul[0].header
 
@@ -37,14 +33,11 @@ def resize_files():
             except OSError as e:
                 print(f"Error reading file {filename}: {e}")
             else:
-
                 # Update the header to reflect the new size
                 header['NAXIS2'] = modified_data.shape[0]
 
-                # new_name = filename.split(".")[0] + "_s.fit"
                 # Write the modified data and header to a new FITS file
                 fits.writeto("s_"+filename, modified_data, header, overwrite=True)
-
 
     print("resize more files? (y/n)")
     answer = input()
